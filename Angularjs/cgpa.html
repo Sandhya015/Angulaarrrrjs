@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Details with CGPA</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    body {
+      background-color: #fffdd0; /* Light Yellow background color */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #fff;
+      width: 60%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="myController" class="container">
+    <h2>Student Details</h2>
+    <p>Total number of students: {{ students.length }}</p>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>CGPA</th>
+      </tr>
+      <tr ng-repeat="student in students">
+        <td>{{ student.name }}</td>
+        <td>{{ student.cgpa }}</td>
+      </tr>
+    </table>
+  </div>
+  <script src="ascript.js"></script>
+</body>
+</html>

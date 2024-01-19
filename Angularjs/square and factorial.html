@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AngularJS Factorial, Square, and Cube Calculator App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <style>
+    body {
+      background-color: #e6e6fa; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculator-container {
+      text-align: center;
+      padding: 30px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div ng-app="myApp" ng-controller="myCtrl" class="calculator-container">
+    <h1>Factorial, Square, and Cube Calculator App</h1>
+    <input type="number" ng-model="number" placeholder="Enter a Number">
+    <button ng-click="calculateFactorial()">Calculate Factorial</button>
+    <button ng-click="calculateSquare()">Calculate Square</button>
+    <button ng-click="calculateCube()">Calculate Cube</button>
+    <button ng-click="calculateFibonacci()">Calculate Fibonacci</button>
+    <p>Factorial: {{factorial}}</p>
+    <p>Square: {{square}}</p>
+    <p>Cube: {{cube}}</p>
+    <p>Fibonacci: {{fibonacci}}</p>
+  </div>
+  <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope) {
+      $scope.number = 0;
+      $scope.factorial = 0;
+      $scope.square = 0;
+      $scope.cube = 0;
+      $scope.fibonacci = 0;
+
+      $scope.calculateFactorial = function() {
+        var factorial = 1;
+        for (var i = $scope.number; i > 1; i--) {
+          factorial *= i;
+        }
+        $scope.factorial = factorial;
+      };
+
+      $scope.calculateSquare = function() {
+        $scope.square = $scope.number * $scope.number;
+      };
+
+      $scope.calculateCube = function() {
+        $scope.cube = $scope.number * $scope.number * $scope.number;
+      };
+
+      $scope.calculateFibonacci = function() {
+        var a = 0, b = 1;
+        for (var i = 2; i <= $scope.number; i++) {
+          var temp = a + b;
+          a = b;
+          b = temp;
+        }
+        $scope.fibonacci = a;
+      };
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="emailApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Login App</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      margin: 0;
+      background-color: #87CEEB; 
+    }
+
+    .login-frame {
+      text-align: center;
+      padding: 30px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background-color: white;
+      width: 350px; 
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="LoginController" class="login-frame">
+  <h1>Email Login</h1>
+
+  <div class="input-group">
+    <input type="email" ng-model="email" placeholder="Enter Email">
+  </div>
+
+  <div class="input-group">
+    <input type="password" ng-model="password" placeholder="Enter Password">
+  </div>
+
+  <button ng-click="login()">Login</button>
+
+  <div ng-show="isLoggedIn" class="hidden">
+    <h2>Welcome, {{ email }}!</h2>
+    <p>This is the protected area.</p>
+  </div>
+</div>
+
+<script>
+  var app = angular.module("emailApp", []);
+
+  app.controller("LoginController", function ($scope, $timeout) {
+    $scope.email = "";
+    $scope.password = "";
+    $scope.isLoggedIn = false;
+
+    $scope.login = function () {
+      if ($scope.email === "user@example.com" && $scope.password === "password") {
+        $scope.isLoggedIn = true;
+
+        $timeout(function () {
+          document.querySelector('.login-frame').classList.add('hidden');
+          document.querySelector('.hidden').classList.remove('hidden');
+        }, 1000);
+      } else {
+        alert("Invalid email or password. Try again.");
+      }
+    };
+  });
+</script>
+
+</body>
+</html>
