@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="userApp">
+
+<head>
+    <title>AngularJS CRUD Application for Users</title>
+    <style>
+        body {
+            background-color: aliceblue;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: calc(100% - 12px);
+        }
+
+        button {
+            padding: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body ng-controller="UserController">
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <div class="container">
+
+        <h1>User Management</h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <button ng-click="editUser(user)">Edit</button>
+                        <button ng-click="deleteUser(user)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Create User</h2>
+        <input type="text" ng-model="newUser.name" placeholder="Name">
+        <input type="email" ng-model="newUser.email" placeholder="Email">
+        <button ng-click="createUser()">Create</button>
+
+        <h2>Edit User</h2>
+        <input type="text" ng-model="editedUser.name" placeholder="Name">
+        <input type="email" ng-model="editedUser.email" placeholder="Email">
+        <button ng-click="updateUser()">Update</button>
+
+    </div>
+
+    <script src="Ascript.js"></script>
+</body>
+
+</html>
