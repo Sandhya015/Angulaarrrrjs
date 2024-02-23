@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Item Collection Management</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: cornflowerblue;
+    }
+    .container {
+      border: 2px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body ng-app="myApp">
+  <div class="container" ng-controller="ItemController">
+    <h2>Item Collection</h2>
+    <p>Total number of items: {{ items.length }}</p>
+    <ul>
+      <li ng-repeat="item in items">
+        {{ item.name }}
+        <button ng-click="removeItem(item)">Remove</button>
+      </li>
+    </ul>
+    <div>
+      <label>New Item: </label>
+      <input type="text" ng-model="newItemName">
+      <button ng-click="addItem()">Add Item</button>
+    </div>
+  </div>
+  <script src="script1.js"></script>
+</body>
+</html>
