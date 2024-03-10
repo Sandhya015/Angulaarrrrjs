@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AngularJS Date Display</title>
+<style>
+    body {
+    background-color: rgb(224, 114, 224);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: rgb(182, 216, 245);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myController">
+    <div class="container">
+<h2>Date Display</h2>
+<label>Date Format:
+<select ng-model="selectedFormat" ng-change="updateDate()">
+<option value="fullDate">Full Date</option>
+<option value="shortDate">Short Date</option>
+<option value="mediumTime">Medium Time</option>
+<option value="shortTime">Short Time</option>
+<option value="yyyy-MM-dd HH:mm:ss">Custom Format (yyyy-MM-dd HH:mm:ss)</option>
+</select>
+</label>
+<p>Selected Date Format: {{ selectedFormat }}</p>
+<p>Formatted Date: {{ formattedDate }}</p>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
